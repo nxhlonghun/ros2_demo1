@@ -1,6 +1,13 @@
 import launch
 import launch.launch_description_sources
 import launch_ros  
+
+
+
+
+
+
+
 from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     #声明一个launch参数
