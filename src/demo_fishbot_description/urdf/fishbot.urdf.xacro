@@ -1,0 +1,2 @@
+<xacro:include filename="$(find demo_fishbot_description)/urdf/fishbot/fishbot.ros2_control.xacro"/>
+<xacro:fishbot_ros2_control/>

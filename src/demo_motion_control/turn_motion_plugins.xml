@@ -1,0 +1,9 @@
+<library path="turn_motion_controller">
+  <class name="demo_motion_control/TurnMotionController"
+         type="motioncontroller::TurnMotionController"
+         base_class_type="motioncontroller::MotionController">
+    <description>
+      An example plugin that implements a spin in place controller.
+    </description>
+  </class>
+</library>

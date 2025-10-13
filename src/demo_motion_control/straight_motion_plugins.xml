@@ -1,0 +1,9 @@
+<library path="straight_motion_controller">
+  <class name="motioncontroller/StraightMotionController"
+         type="motioncontroller::StraightMotionController"
+         base_class_type="motioncontroller::MotionController">
+    <description>
+      An example plugin that implements a spin in place controller.
+    </description>
+  </class>
+</library>
