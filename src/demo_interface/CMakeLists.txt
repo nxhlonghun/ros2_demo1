@@ -14,6 +14,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/FaceDetector.srv" 
   "srv/Partol.srv"
   "msg/CinCout.msg"
+  "msg/System.msg"
   DEPENDENCIES sensor_msgs
 )
 

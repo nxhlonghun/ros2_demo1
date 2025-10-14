@@ -11,16 +11,25 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(demo_interface REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 add_executable(turtle_circle src/turtle_circle.cpp)
 add_executable(turtle_control src/turtle_control.cpp)
 add_executable(turtle_cin src/turtle_cin.cpp)
+add_executable(sys_pub src/sys_pub.cpp)
+add_executable(sys_sub_dispaly src/sys_sub_dispaly.cpp)
+
+target_link_libraries(sys_sub_dispaly Qt6::Widgets)
 
 ament_target_dependencies(turtle_circle rclcpp geometry_msgs )
 ament_target_dependencies(turtle_control rclcpp geometry_msgs turtlesim)
 ament_target_dependencies(turtle_cin rclcpp demo_interface )
+ament_target_dependencies(sys_pub rclcpp demo_interface )
+ament_target_dependencies(sys_sub_dispaly rclcpp demo_interface )
 
-install(TARGETS turtle_circle turtle_control turtle_cin
+
+
+install(TARGETS turtle_circle turtle_control turtle_cin sys_pub sys_sub_dispaly
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)
