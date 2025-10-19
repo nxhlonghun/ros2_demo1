@@ -11,7 +11,7 @@
         "/home/nxh/ros2_demo1/install/**",
         "/opt/ros/humble/include/nav2_costmap_2d",
         "/usr/include/opencv4",
-
+        "/home/nxh/ros2_demo1/src/**",
         "/home/nxh/Qt/**"
       ],
       "defines": [],

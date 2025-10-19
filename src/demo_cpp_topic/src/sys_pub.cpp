@@ -7,11 +7,12 @@
 
 using system_msg = demo_interface::msg::System;
 using namespace std;
+std::vector<std::string> show_node, show_node_old;
 
 class SysPub : public rclcpp::Node
 {
 private:
-    string result = "无节点";
+    string result = "";
     array<char, 128> buffer;
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<system_msg>::SharedPtr publisher_; // 发布者的智能指针
@@ -23,9 +24,9 @@ public:
     }
     void timer_callback()
     {
-        int a = 1;
+        // int a = 1;
         auto msg = system_msg();
-        FILE *pipe = popen("ros2 node list", "r");
+        FILE *pipe = popen("ros2 topic list", "r");
         if (!pipe)
         {
             msg.result = "未获取到节点信息";
@@ -34,12 +35,27 @@ public:
         {
             while (fgets(buffer.data(), buffer.size(), pipe) != nullptr)
             {
-                if (result != buffer.data())
+                if (find(show_node.begin(), show_node.end(), buffer.data()) == show_node.end())
+                {
+                    show_node.push_back(buffer.data());
+                }
+                /*if (result != buffer.data())
                 {
                     // result = "";
-                    result = buffer.data();
+                    result += buffer.data();
+                }*/
+            }
+            if (show_node != show_node_old)
+            {
+                show_node_old.clear();
+                result.clear();
+                show_node_old = show_node;
+                for (const auto &node_name : show_node_old)
+                {
+                    result += node_name + '\n';
                 }
             }
+
             msg.node_name = result;
             msg.result = "获取到节点信息";
         }
